@@ -4,6 +4,7 @@
 package com.example;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,13 @@ public class HelloWorldController {
     public String helloget(@RequestParam String message) {
         return "<h1>Greetings from Spring Boot using GET Method: "+ message +" !</h1>";
     }
+	
+	@RequestMapping("/hellojsp")
+	public String hello(ModelMap modelMap) {
+
+	    modelMap.addAttribute("message", "Hello Spring from JSP");
+	    return "hello";
+	}
 	
 //	public String hello(
 //	        @RequestParam(value = "message", defaultValue = "Hello Spring")
