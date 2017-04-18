@@ -26,7 +26,7 @@ public class EmployeeTests {
 	
 	@Test
 	public void checkGet() throws Exception {
-		String result = "[{\"name\":\"ariyady\",\"gender\":\"male\"}]";
+		String result = "[{\"name\":\"ariyady\",\"gender\":\"male\",\"id\":1}]";
 	    this.mockMvc.perform(get("/employees?gender=male"))
 	        .andExpect(content().json(result));
 	}
@@ -34,8 +34,13 @@ public class EmployeeTests {
 	@Test
 	public void checkPost() throws Exception{
 		this.mockMvc.perform(post("/employees")
-				.content("{\"name\":\"james\",\"gender\":\"male\"}")
+				.content("{\"name\":\"james\",\"gender\":\"male\",\"id\":1}")
 				.contentType("application/json"))
 		.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void checkGetDet() throws Exception{
+		this.mockMvc.perform(get("/employee/3")).andExpect(status().isNotFound());
 	}
 }

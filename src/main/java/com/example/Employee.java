@@ -11,14 +11,16 @@ public class Employee {
 	
 	String name;
 	String gender;
+	int id;
 	
 	public Employee(){
 		
 	}
 	
-	public Employee(String name, String gender){
+	public Employee(String name, String gender, int id){
 		this.name = name;
 		this.gender = gender;
+		this.id = id;
 	}
 	
 	public String getName() {
@@ -27,5 +29,9 @@ public class Employee {
 	
 	public String getGender() {
 		return gender;
+	}
+	
+	public int getId() {
+		return id;
 	}
 }
